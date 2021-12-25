@@ -1,0 +1,20 @@
+<table class="table table-borderless">
+  <thead>
+    <tr>
+      <th scope="col">Ürün Adı</th>
+      <th scope="col">Stok</th>
+      <th scope="col">Fiyat</th>
+      <th scope="col">Toplam Fiyat</th>
+      <th scope="col">Ödeme Türü</th>
+      <th scope="col">Açıklama</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let basket of baskets">
+    <td>{{basket.productName}}</td>
+    <td>{{basket.unitsInStocks}}</td>
+    <td>{{basket.unitPrice}}</td>
+    <td>{{basket.totalAmount}}</td>
+    <td>{{basket.paymentType}}</td>
+    <td>{{basket.description}}</td>
+  </tr>
+</table>
