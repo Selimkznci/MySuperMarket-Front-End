@@ -3,6 +3,8 @@ import { Product } from 'src/app/models/product';
 import {HttpClient} from '@angular/common/http' // Apı Bağlantısı İçin
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { ProductService } from 'src/app/services/product.service';
+import { ActivatedRoute } from '@angular/router';
+import { observable } from 'rxjs';
 
 
 @Component({
@@ -22,14 +24,29 @@ export class ProductComponent implements OnInit {
   //   message:""
   //}
 
-  constructor(private productService:ProductService) { }
+  constructor(private productService:ProductService,
+              private activatedRoute:ActivatedRoute) { }//pasiften aktifleştirilmiş route mevcut route
 
   ngOnInit(): void {
-    this.getProducts()
+
+    this.activatedRoute.params.subscribe(params=>{
+      if (params["categoryId"]) {
+        this.getProductsByCategory(params["categoryId"])
+      }else{
+        this.getProducts()
+      }
+    })
   }
 
   getProducts(){
     this.productService.getProducts().subscribe(Response => {
+      this.products=Response.data
+      this.dataLoaded=true
+    })
+  }
+
+  getProductsByCategory(categoryId:Number){
+    this.productService.getProductsByCategory(categoryId).subscribe(Response => {
       this.products=Response.data
       this.dataLoaded=true
     })
