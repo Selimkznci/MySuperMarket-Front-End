@@ -8,14 +8,16 @@ import { Product } from '../models/product';
   providedIn: 'root'
 })
 export class ProductService {
-  apiUrl = "https://localhost:44386/api/products/getall"
+  apiUrl = "https://localhost:44386/api/"
   constructor(private httpClient:HttpClient) { }//Http türünde nesne istiyorum
 
   getProducts():Observable<ListResponseModel<Product>>{//subcribe olunabilir response model doneceksin
+    let newPath=this.apiUrl+ "products/getall"
     return this.httpClient // HttpClient İle İstek yap
-    .get<ListResponseModel<Product>>(this.apiUrl)    //bir get isteği yap nereye apiUrlye gelen datayo productresponsemodel yap           //gelen datayı model reponseye map edeceksin
-    // .subscribe((Response) => {    //subcribe ile çalıştır gelen response için ne yapayım
-    //   this.products = Response.data //  responseden gelen data
-    // })
+    .get<ListResponseModel<Product>>(newPath)
   }
+  getProductsByCategory(categoryId:Number):Observable<ListResponseModel<Product>>{
+    let newPath=this.apiUrl+ "products/getByCategory?categoryId="+categoryId
+    return this.httpClient
+    .get<ListResponseModel<Product>>(newPath)}
 }
