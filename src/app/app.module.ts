@@ -11,6 +11,7 @@ import { NaviComponent } from './components/navi/navi.component';
 import { SaleComponent } from './components/sale/sale.component';
 import { BasketComponent } from './components/basket/basket.component';
 import { VatAddedPipe } from './pipes/vat-added.pipe';
+import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { VatAddedPipe } from './pipes/vat-added.pipe';
     NaviComponent,
     SaleComponent,
     BasketComponent,
-    VatAddedPipe
+    VatAddedPipe,
+    FilterPipePipe,
   ],
   imports: [
     BrowserModule,

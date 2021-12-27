@@ -1,7 +1,7 @@
 export interface Product{
-  productId:Number
-  categoryId:Number
-  productName:String
+  productId:number
+  categoryId:number
+  productName:string
   unitsInStocks:number
   unitPrice:number
 }
