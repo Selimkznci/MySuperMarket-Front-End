@@ -17,12 +17,9 @@ export class ProductComponent implements OnInit {
 
   products:Product[] = [];
   dataLoaded = false
+  filterText =""
   apiUrl = "https://localhost:44386/api/products/getall" // postman'den listelediğimiz adres
-  // productResponseModel:ProductResponseModel={
-  //   data:this.products,
-  //   success:true,
-  //   message:""
-  //}
+
 
   constructor(private productService:ProductService,
               private activatedRoute:ActivatedRoute) { }//pasiften aktifleştirilmiş route mevcut route

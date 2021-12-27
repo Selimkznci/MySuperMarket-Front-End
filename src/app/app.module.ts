@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';  // İstekte bulunduğumuz için  mecbur olacak ve imports  içerisinde de olacak
+import { FormsModule } from '@angular/forms'; //Sonradan ekledik [(ngModel)] in çalışması için import edildi
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +10,7 @@ import { CategoryComponent } from './components/category/category.component';
 import { NaviComponent } from './components/navi/navi.component';
 import { SaleComponent } from './components/sale/sale.component';
 import { BasketComponent } from './components/basket/basket.component';
+import { VatAddedPipe } from './pipes/vat-added.pipe';
 
 @NgModule({
   declarations: [
@@ -17,12 +19,14 @@ import { BasketComponent } from './components/basket/basket.component';
     CategoryComponent,
     NaviComponent,
     SaleComponent,
-    BasketComponent
+    BasketComponent,
+    VatAddedPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule //import ettik buraya yazdık
   ],
   providers: [],
   bootstrap: [AppComponent]
