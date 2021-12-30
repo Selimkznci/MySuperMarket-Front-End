@@ -5,6 +5,7 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { ProductService } from 'src/app/services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { observable } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class ProductComponent implements OnInit {
 
 
   constructor(private productService:ProductService,
-              private activatedRoute:ActivatedRoute) { }//pasiften aktifleştirilmiş route mevcut route
+              private activatedRoute:ActivatedRoute, private toastrService:ToastrService) { }//pasiften aktifleştirilmiş route mevcut route
 
   ngOnInit(): void {
 
@@ -47,5 +48,10 @@ export class ProductComponent implements OnInit {
       this.products=Response.data
       this.dataLoaded=true
     })
+  }
+
+  addToCart(product:Product){
+
+    this.toastrService.success("Sepete Eklendi",product.productName)
   }
 }
